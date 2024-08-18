@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main-bg-color: #ffffff;
+  --main-alt-bg-color: #ffffff;
+  --secondary-bg-color: #eeeeee;
+  --primary-color: #007bff;
+  --text-color: #000;
+  --par-color: #7B8EC8;
+  --menu-bar-color: #ffffff;
+  --backdrop-color: #ffffff98;
+}
+
+body {
+  background-color: var(--main-bg-color);
+  overflow: hidden;
+}
+
+::selection {
+  background-color: var(--primary-color);
+  color: var(--text-color);
+}
+
+body.dark {
+  --main-bg-color: #141414;
+  --main-alt-bg-color: #1d1d1d;
+  --secondary-bg-color: #1d1d1d;
+  --text-color: #fff;
+  --menu-bar-color: #0f0f0f;
+  --backdrop-color: #00000098;
+}
+
+body.default {
+  --primary-color: #007bff;
+}
+.default-invert {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(2159%) hue-rotate(200deg)
+    brightness(104%) contrast(102%);
+}
+body.orange {
+  --primary-color: #ff6f00;
+}
+.orange-invert {
+  filter: brightness(0) saturate(100%) invert(49%) sepia(34%) saturate(7100%) hue-rotate(5deg)
+    brightness(110%) contrast(103%);
+}
+
+body.green {
+  --primary-color: #4caf50;
+}
+.green-invert {
+  filter: brightness(0) saturate(100%) invert(55%) sepia(61%) saturate(408%) hue-rotate(73deg)
+    brightness(94%) contrast(95%);
+}
+
+.draggable {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+.no-transition *:not(.toggler) {
+  transition: none !important;
+}
+.toggler {
+  transition: left 0.3s ease, transform 0.3s ease;
+}
