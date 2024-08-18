@@ -1,19 +1,18 @@
 /* eslint-disable prettier/prettier */
 
 import { WidgetProps } from '@renderer/types'
-import { Reorder, useDragControls } from 'framer-motion'
+import { motion, Reorder, useDragControls } from 'framer-motion'
 import { ReorderIcon } from './ReorderIcon'
 import Seperator from './Seperator'
 
-const Widget = ({
-  item,
-  isDragging,
-  setIsDragging
-}: {
+type Props = {
   item: WidgetProps
+  reordering: boolean
   isDragging: number | null
   setIsDragging: React.Dispatch<React.SetStateAction<number | null>>
-}): JSX.Element => {
+}
+
+const Widget = ({ item, isDragging, setIsDragging, reordering }: Props): JSX.Element => {
   const controls = useDragControls()
   return (
     <Reorder.Item
@@ -31,8 +30,16 @@ const Widget = ({
       {
         <div>
           <div className="flex items-start gap-5">
-            <ReorderIcon dragControls={controls} />
-            <item.widget />
+            <item.widget>
+              {reordering && (
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ transition: { delay: 0.1 }, opacity: 1 }}
+                >
+                  <ReorderIcon dragControls={controls} />
+                </motion.span>
+              )}
+            </item.widget>
           </div>
           <Seperator />
         </div>

@@ -9,6 +9,7 @@ import { useEffect, useState } from 'react'
 import { Reorder } from 'framer-motion'
 import { WidgetProps } from '@renderer/types'
 import Widget from './Widget'
+import reorderIcon from '../assets/reorder.svg'
 
 const intialWidgets: WidgetProps[] = [
   {
@@ -32,6 +33,7 @@ const SideBar = (): JSX.Element => {
         })
       : intialWidgets
   })
+  const [reordering, setReordering] = useState(false)
   const { mode } = useTheme()
 
   useEffect(() => {
@@ -58,9 +60,19 @@ const SideBar = (): JSX.Element => {
             item={item}
             isDragging={isDragging}
             setIsDragging={setIsDragging}
+            reordering={reordering}
           />
         ))}
       </Reorder.Group>
+      <button
+        onClick={() => {
+          setReordering((prev) => !prev)
+        }}
+        className={`rounded-full py-2 px-5 flex items-center justify-start gap-2  hover:opacity-70 transition-all w-fit ml-auto ${reordering ? 'bg-[--secondary-bg-color]' : 'bg-[--main-color] shadow-md'}`}
+      >
+        <img src={reorderIcon} alt="reorder" className="size-5" />
+        <p className="text-sm text-[--text-color]">Reorder</p>
+      </button>
       <HelpButton />
     </div>
   )

@@ -7,8 +7,10 @@
   --main-alt-bg-color: #ffffff;
   --secondary-bg-color: #eeeeee;
   --primary-color: #007bff;
+  --invert-primary: brightness(0) saturate(100%) invert(27%) sepia(98%) saturate(2159%)
+    hue-rotate(200deg) brightness(104%) contrast(102%);
   --text-color: #000;
-  --par-color: #7B8EC8;
+  --par-color: #7b8ec8;
   --menu-bar-color: #ffffff;
   --backdrop-color: #ffffff98;
 }
@@ -16,6 +18,7 @@
 body {
   background-color: var(--main-bg-color);
   overflow: hidden;
+  /* cursor: url('./Normal.cur'), auto; */
 }
 
 ::selection {
@@ -67,5 +70,7 @@ body.green {
   transition: none !important;
 }
 .toggler {
-  transition: left 0.3s ease, transform 0.3s ease;
+  transition:
+    left 0.3s ease,
+    transform 0.3s ease;
 }

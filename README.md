@@ -1,6 +1,9 @@
-# -
+# Link It
 
-An Electron application with React and TypeScript
+Link It is an Electron application built with React and TypeScript. It serves as a bookmark links app, allowing users to save and organize links that they frequently visit. The app is designed to be cross-platform, running on Windows, macOS, and Linux.
+
+## App Images
+
 
 ## Recommended IDE Setup
 

@@ -14,6 +14,7 @@ const AddLinkCard = ({
       {
         url: string
         name: string
+        id: string
       }[]
     >
   >
@@ -24,7 +25,7 @@ const AddLinkCard = ({
       <motion.div
         layout
         onClick={() => setToggle(true)}
-        className="flex flex-col justify-center gap-2 items-center rounded-lg p-6 bg-[--main-bg-color] shadow-xl cursor-pointer group"
+        className="flex flex-col justify-center gap-2 items-center rounded-lg p-6 bg-[--main-bg-color] shadow-xl cursor-pointer group size-[190px] min-w-[190px] cursor-gr"
       >
         <div className="rounded-full bg-[--secondary-bg-color] group-hover:bg-[--primary-color] transition-all">
           <img src={plus} alt="add" className="size-20 rounded-full p-2 invert dark:invert-0" />

@@ -10,8 +10,8 @@ export function ReorderIcon({ dragControls }: Props): JSX.Element {
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 39 39"
-      width="25"
-      height="25"
+      width="20"
+      height="20"
       onPointerDown={(event) => dragControls.start(event)}
       className='cursor-grab'
     >

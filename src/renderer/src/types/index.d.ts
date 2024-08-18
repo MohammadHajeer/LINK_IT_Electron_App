@@ -7,5 +7,5 @@ export type ThemeParams = { name: Theme; hex: string }
 
 export type WidgetProps = {
   item: number
-  widget: () => JSX.Element
+  widget: ({ children }: { children: React.ReactNode }) => JSX.Element
 }

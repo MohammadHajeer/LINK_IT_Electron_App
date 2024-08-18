@@ -8,20 +8,20 @@ import AddLinkCard from './components/AddLinkCard'
 import LinkCard from './components/LinkCard'
 // https://logo.clearbit.com/
 const App = (): JSX.Element => {
-  const [toggle, setToggle] = useState(() => {
+  const [toggle, setToggle] = useState<boolean>(() => {
     const localData = window.localStorage.getItem('toggle')
-    return localData === 'true' || false
+    return localData === 'true' || true
   })
   const [links, setLinks] = useState(() => {
     const localData = window.localStorage.getItem('links')
     return localData
-      ? (JSON.parse(localData) as { url: string; name: string }[])
-      : ([] as { url: string; name: string }[])
+      ? (JSON.parse(localData) as { url: string; name: string; id: string }[])
+      : ([] as { url: string; name: string; id: string }[])
   })
   const { mode } = useTheme()
   const animate = useAnimation()
   let isOpen = toggle
-
+  console.log(links)
   return (
     <>
       <MenuBar />
@@ -33,7 +33,7 @@ const App = (): JSX.Element => {
         <motion.div
           animate={animate}
           className={`bg-[--secondary-bg-color] flex-1 transition-all absolute w-full h-full top-0 right-0 ${toggle ? 'rounded-l-xl' : 'rounded-none'} py-7 px-10`}
-          style={{ width: toggle ? 'calc(100% - 300px)' : '100%' }}
+          style={{ width: toggle ? 'calc(100% - 300px)' : '100%', transition: '0.4s' }}
         >
           <button
             onClick={() => {
@@ -54,16 +54,16 @@ const App = (): JSX.Element => {
             />
           </button>
           <div
-            className="rounded-xl  h-full gap-5"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-              alignContent: 'start'
-            }}
+            className="rounded-xl h-full gap-5 flex flex-wrap items-start content-start justify-start"
+            // style={{
+            //   display: 'grid',
+            //   gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
+            //   alignContent: 'start'
+            // }}
           >
             <AddLinkCard setLinks={setLinks} />
-            {links.map((link, index) => (
-              <LinkCard key={index} name={link.name} url={link.url} />
+            {links.map((link) => (
+              <LinkCard setLinks={setLinks} key={link.id} {...link} />
             ))}
           </div>
         </motion.div>
